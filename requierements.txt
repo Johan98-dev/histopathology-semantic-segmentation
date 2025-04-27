@@ -1,0 +1,8 @@
+numpy==2.0.2
+matplotlib==3.10.0
+os
+collections
+random
+tqdm
+opencv-python==4.11.0
+tensorflow==2.18.0
