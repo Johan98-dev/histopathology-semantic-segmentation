@@ -1,33 +1,39 @@
-# Segmentación Semántica Multiclase de Imágenes Histopatológicas de Cáncer de Mama
+# Multiclass Semantic Segmentation of Breast Cancer Histopathological Images
 
-## Descripción
-Este proyecto implementa modelos U-Net para la segmentación semántica multiclase de Imágenes de Diapositiva Completa (WSI) de cáncer de mama, utilizando el dataset público **Breast Cancer Semantic Segmentation (BCSS)**. El objetivo es clasificar regiones tisulares en clases como Tumor, Estroma, Infiltrado Linfocítico, Necrosis y Otros, apoyando el análisis patológico computacional.
+## Description
+This project implements U-Net models for the multiclass semantic segmentation of Whole Slide Images (WSIs) in breast cancer, utilizing the public **Breast Cancer Semantic Segmentation (BCSS)** dataset. The primary objective is to classify tissue regions into critical categories—such as Tumor, Stroma, Lymphocytic Infiltrate, Necrosis, and Others—to support advanced computational pathology workflows.
 
-## Objetivos
-- Desarrollar modelos U-Net para segmentación multiclase de WSIs.
-- Comparar el rendimiento de modelos con tamaños de entrada de 256x256 y 512x512 píxeles.
-- Evaluar la precisión y generalización mediante métricas estándar (Dice, Jaccard, Accuracy).
+## Objectives
+- Develop robust U-Net models tailored for multiclass segmentation on high-resolution WSIs.
+- Compare and contrast model performance using input patch sizes of 256x256 and 512x512 pixels.
+- Evaluate segmentation accuracy and generalization capabilities using standard medical imaging metrics (Dice Coefficient, Jaccard Index, and Global Accuracy).
 
-## Metodología
-- **Arquitectura**: U-Net con KimiaNet (basado en DenseNet-121) como backbone preentrenado.
-- **Dataset**: BCSS, con WSIs anotadas por expertos.
-- **Preprocesamiento**: Extracción de parches de 256x256 y 512x512 píxeles.
-- **Entrenamiento**: Validación cruzada K-Fold, optimizador AdamW, función de pérdida Categorical Crossentropy, ajuste fino progresivo de capas.
-- **Hiperparámetros**: Tasas de aprendizaje (1x10⁻³ a 1x10⁻⁵), tamaños de lote (8, 10, 12), 18 épocas.
-- **Evaluación**: Métricas por clase y micro-average para clases desbalanceadas.
+## Methodology
+- **Architecture**: U-Net framework leveraging KimiaNet (a DenseNet-121 based backbone) as a pretrained encoder.
+- **Dataset**: BCSS dataset, featuring expert-annotated WSIs.
+- **Preprocessing**: Grid-based patch extraction at 256x256 and 512x512 pixel resolutions.
+- **Training**: Stratified K-Fold cross-validation, AdamW optimizer, Categorical Crossentropy loss function, and progressive layer fine-tuning.
+- **Hyperparameters**: Learning rates ranging from $1\times10^{-3}$ to $1\times10^{-5}$, batch sizes of 8, 10, and 12, trained over 18 epochs.
+- **Evaluation**: Per-class metrics and micro-averaged aggregates to effectively handle highly imbalanced tissue classes.
 
-## Resultados
-Los modelos lograron una segmentación precisa, con máscaras predichas altamente similares a las reales, especialmente en clases mayoritarias (Tumor, Estroma). El modelo de 512x512 mostró ventajas en clases con mayor contexto espacial, mientras que el de 256x256 fue más eficiente en clases minoritarias. La validación cruzada aseguró generalización robusta.
+## Key Results
+The developed models achieved high-fidelity segmentation, yielding predicted masks that closely align with ground-truth annotations, particularly within majority classes (Tumor and Stroma). The 512x512 model demonstrated superior performance in capturing broader spatial context, whereas the 256x256 model proved more efficient at recognizing micro-features in minority classes. Cross-validation verified robust generalization across unseen tissue samples.
 
-## Requisitos
+## Publication
+If you find this work useful for your research, please cite our conference paper:
+
+> J. Albarracin, F. Cano and A. Cruz-Roa, *"Semantic Segmentation of Tissue in Histopathological Breast Cancer Images Using a U-Net,"* **2025 21st International Symposium on Biomedical Image Processing and Analysis (SIPAIM)**, Pasto, Colombia, 2025, pp. 1-4. 
+> **DOI:** [10.1109/SIPAIM67325.2025.11283435](https://doi.org/10.1109/SIPAIM67325.2025.11283435)
+
+## Requirements
 - Python 3.8+
-- Bibliotecas: TensorFlow, PyTorch, NumPy, OpenSlide, scikit-learn
-- Hardware: GPU recomendada (por ejemplo, NVIDIA GTX 1080 o superior)
+- Frameworks & Libraries: TensorFlow, PyTorch, NumPy, OpenSlide, scikit-learn
+- Hardware: NVIDIA GPU with at least 16 GB of VRAM recommended (e.g., NVIDIA T4, RTX 3080, or superior)
 
-## Instalación
-1. Clona el repositorio:
+## Installation & Setup
+1. Clone this repository:
    ```bash
-   git clone https://github.com/[tu-usuario]/[tu-repositorio].git
+   git clone https://github.com/Johan98-dev/histopathology-semantic-segmentation.git
 
 ## Agradecimientos
-Este trabajo de grado en modalidad EPI ha sido desarrollado en el marco del proyecto de investigación titulado “Implementación de una red de investigación, desarrollo tecnológico e innovación en patología digital (RedPat) soportada por tecnologías de la industria 4.0 en el Meta”, Código BPIN 2019000100060, financiado por MinCiencias y el OCAD del Fondo de Ciencia Tecnología e Innovación del Sistema General de Regalías.
+This undergraduate thesis, developed under the EPI (Research Project Student) modality, was carried out within the framework of the research project titled “Implementación de una red de investigación, desarrollo tecnológico e innovación en patología digital (RedPat) soportada por tecnologías de la industria 4.0 en el Meta” [Implementation of a research, technological development, and innovation network in digital pathology (RedPat) supported by Industry 4.0 technologies in Meta], Code BPIN 2019000100060. This project was funded by MinCiencias (the Colombian Ministry of Science, Technology, and Innovation) and the OCAD of the Science, Technology, and Innovation Fund of the General Royalties System.
