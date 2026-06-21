@@ -35,5 +35,5 @@ If you find this work useful for your research, please cite our conference paper
    ```bash
    git clone https://github.com/Johan98-dev/histopathology-semantic-segmentation.git
 
-## Agradecimientos
+## Acknowledgments
 This undergraduate thesis, developed under the EPI (Research Project Student) modality, was carried out within the framework of the research project titled “Implementación de una red de investigación, desarrollo tecnológico e innovación en patología digital (RedPat) soportada por tecnologías de la industria 4.0 en el Meta” [Implementation of a research, technological development, and innovation network in digital pathology (RedPat) supported by Industry 4.0 technologies in Meta], Code BPIN 2019000100060. This project was funded by MinCiencias (the Colombian Ministry of Science, Technology, and Innovation) and the OCAD of the Science, Technology, and Innovation Fund of the General Royalties System.
